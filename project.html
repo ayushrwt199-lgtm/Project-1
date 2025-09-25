@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SwiftAI Consulting (SAC) — Professional IT Solutions</title>
+  <meta name="description" content="SwiftAI Consulting offers expert IT solutions, from cloud migration to security audits. Partner with us for reliable and scalable technology services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  
+  <style>
+    :root{
+      --bg:#ffffff; 
+      --bg-secondary: #f7f9fc;
+      --card:#ffffff; 
+      --text: #333333;
+      --muted:#6c757d; 
+      --accent:#0056b3; 
+      --accent-dark: #004494;
+      --radius:8px; 
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; 
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-secondary);
+      color: var(--text);
+      -webkit-font-smoothing:antialiased; 
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6; 
+      padding:32px;
+    }
+
+    
+    .wrap{max-width:1100px;margin:0 auto}
+
+    
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:48px;
+      padding: 16px 0;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:var(--radius);
+      background:var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size: 24px;
+      color:#ffffff;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:24px; 
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--accent); }
+    nav a.cta{
+      background:var(--accent);
+      color:#ffffff;
+      padding:10px 18px;
+      border-radius:var(--radius);
+      text-decoration:none;
+      transition: background-color 0.3s;
+    }
+    nav a.cta:hover { background-color: var(--accent-dark); }
+
+    
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:64px}
+    .hero-card{
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+    }
+    h1{font-size:42px;margin:0 0 16px; font-weight: 700; color: #1d2d35;}
+    p.lead{color:var(--muted);margin:0 0 24px; font-size: 18px;}
+    .btn{
+      display:inline-block;
+      padding:12px 24px;
+      border-radius:var(--radius);
+      background:var(--accent);
+      color:#ffffff;
+      text-decoration:none;
+      font-weight:600; 
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .btn:hover { background-color: var(--accent-dark); transform: translateY(-2px); }
+
+    
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+    .card{
+      background:var(--card);
+      padding:24px;
+      border-radius:var(--radius);
+      border: 1px solid #e9ecef;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .card h4{margin:0 0 8px; color: var(--accent); font-size: 18px; font-weight: 600;}
+    .muted{color:var(--muted);font-size:15px}
+
+    
+    .ai-drawer{
+      position:fixed;
+      right:28px;
+      bottom:28px;
+      width:380px;
+      max-height:72vh;
+      background:var(--card);
+      border-radius:16px;
+      padding:12px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.15);
+      border: 1px solid #dee2e6;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden
+    }
+    .ai-header{display:flex;align-items:center;justify-content:space-between;padding:8px; border-bottom: 1px solid #e9ecef;}
+    .ai-messages{flex:1;overflow:auto;padding:8px}
+    .msg{margin:10px 0;padding:12px;border-radius:12px;max-width:84%; font-family: 'Poppins', sans-serif; line-height: 1.5;}
+    .msg.user{background-color: var(--accent); color: #ffffff; margin-left:auto}
+    .msg.ai{background-color: #e9ecef; color: var(--text);}
+    .ai-input{display:flex;gap:8px;padding:8px; border-top: 1px solid #e9ecef;}
+    .ai-input input{flex:1;padding:10px;border-radius:8px;border:1px solid #ced4da;background:#ffffff;color:inherit; font-family: 'Poppins', sans-serif;}
+    .ai-input input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);}
+    .ai-toggle{
+      position:fixed;
+      right:28px;
+      bottom:28px;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color:#ffffff;
+      box-shadow:0 4px 15px rgba(0, 86, 179, 0.3);
+      cursor:pointer; 
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .ai-toggle:hover { transform: scale(1.1); background-color: var(--accent-dark); }
+
+    
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; text-align: center;}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .ai-drawer{right:14px;bottom:100px}
+    }
+    @media (max-width:620px){
+      body{padding:18px}
+      .services{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    
+    .fade-up{transform:translateY(12px);opacity:0;transition:all .8s cubic-bezier(.2,.9,.3,1)}
+    .fade-up.show{transform:none;opacity:1}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div style="font-weight:700; color: var(--text);">SwiftAI Consulting</div>
+          <div style="font-size:12px;color:var(--muted)">Professional IT Solutions</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Book Consultation</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card fade-up" id="heroCard">
+          <h1>Next-Generation IT Consulting for Your Business</h1>
+          <p class="lead">We empower businesses with scalable cloud solutions, robust security, and expert guidance. Drive growth and efficiency with a trusted technology partner.</p>
+          <div style="display:flex;gap:12px;align-items:center">
+            <a class="btn" href="#contact">Get Started</a>
+            <a style="color:var(--accent);text-decoration:none;font-weight:600" href="#services">Our Services →</a>
+          </div>
+        </div>
+
+        
+        <aside style="display:flex;flex-direction:column;gap:12px;">
+          <div class="card fade-up" style="display:flex;flex-direction:column;">
+            <div style="font-weight:700;margin-bottom:8px; color: var(--accent);">AI-Powered Assistant</div>
+            <div style="flex:1;border-radius:10px;padding:10px;display:flex;flex-direction:column;justify-content:space-between">
+              <div style="font-size:14px;color:var(--muted)">Get instant answers on service pricing, project timelines, and technical questions.</div>
+              <div style="display:flex;gap:8px;align-items:center; margin-top: 16px;">
+                <input placeholder="e.g., Cost to migrate a database" style="flex:1;padding:10px;border-radius:8px;border:1px solid #ced4da;background:transparent;color:inherit" />
+                <button class="btn" style="padding:8px 12px">Ask</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="services">
+        <h3 style="text-align: center; font-size: 28px; margin:0 0 32px; color: #1d2d35;">Our Core Services</h3>
+        <div class="services">
+          <div class="card fade-up">
+            <h4>Cloud Migration</h4>
+            <div class="muted">Seamlessly move your infrastructure to the cloud with our expert planning and execution.</div>
+          </div>
+          <div class="card fade-up">
+            <h4>Security & Compliance</h4>
+            <div class="muted">Protect your assets with comprehensive security audits, pen testing, and compliance checks.</div>
+          </div>
+          <div class="card fade-up">
+            <h4>Application Development</h4>
+            <div class="muted">Custom web and mobile application development to meet your unique business needs.</div>
+          </div>
+          <div class="card fade-up">
+            <h4>Managed IT Support</h4>
+            <div class="muted">Reliable, 24/7 managed support to ensure your systems are always running smoothly.</div>
+          </div>
+          <div class="card fade-up">
+            <h4>Data & Analytics</h4>
+            <div class="muted">Turn your data into actionable insights with our business intelligence and analytics services.</div>
+          </div>
+          <div class="card fade-up">
+            <h4>DevOps & Automation</h4>
+            <div class="muted">Streamline your development and operations with our CI/CD and automation expertise.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" style="margin-top:24px; background-color: var(--card); padding: 48px; border-radius: var(--radius); text-align: center;">
+        <div class="fade-up">
+          <h3 style="color: #1d2d35; font-size: 28px;">About SwiftAI Consulting</h3>
+          <p class="muted" style="max-width: 700px; margin: 16px auto 0;">We combine deep industry expertise with the power of AI to deliver efficient, reliable, and cost-effective IT solutions. Our mission is to be a trusted partner in your digital transformation journey.</p>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:64px">
+        <div class="card fade-up" style="padding: 48px;">
+          <h3 style="color: #1d2d35; text-align: center; font-size: 28px; margin-bottom: 24px;">Book a Free Consultation</h3>
+          <form id="contactForm" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <input name="name" placeholder="Your Name" style="padding:12px;border-radius:8px;border:1px solid #ced4da;background:transparent;color:inherit" />
+            <input name="company" placeholder="Company Name" style="padding:12px;border-radius:8px;border:1px solid #ced4da;background:transparent;color:inherit" />
+            <input name="email" placeholder="Work Email" style="padding:12px;border-radius:8px;border:1px solid #ced4da;background:transparent;color:inherit" />
+            <input name="phone" placeholder="Phone (Optional)" style="padding:12px;border-radius:8px;border:1px solid #ced4da;background:transparent;color:inherit" />
+            <textarea name="message" placeholder="How can we help you?" style="grid-column:1/-1;padding:12px;border-radius:8px;border:1px solid #ced4da;background:transparent;color:inherit; min-height: 100px;"></textarea>
+            <button type="submit" class="btn" style="grid-column:1/-1; padding: 14px;">Request Consultation</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  
+  <div id="aiDrawer" class="ai-drawer" style="display:none">
+    <div class="ai-header">
+      <div style="font-weight:700">SwiftAI Assistant</div>
+      <div style="color:var(--muted);font-size:13px">v1.0</div>
+    </div>
+    <div class="ai-messages" id="aiMessages">
+      <div class="msg ai">Hello! How can I assist you today? Feel free to ask about our services, pricing, or technical details.</div>
+    </div>
+    <div class="ai-input">
+      <input id="aiInput" placeholder="Type your question..." />
+      <button id="aiSend" class="btn">Send</button>
+    </div>
+  </div>
+  <div id="aiToggle" class="ai-toggle">AI</div>
+
+  
+  <script>
+    
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('.fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('show'), 100*i));
+    });
+
+    
+    const aiToggle = document.getElementById('aiToggle');
+    const aiDrawer = document.getElementById('aiDrawer');
+    aiToggle.addEventListener('click',()=>{
+      const open = aiDrawer.style.display !== 'none';
+      aiDrawer.style.display = open ? 'none' : 'flex';
+    });
+
+    
+    const aiSend = document.getElementById('aiSend');
+    const aiInput = document.getElementById('aiInput');
+    const sendMessage = async ()=>{
+      const text = aiInput.value.trim(); if(!text) return;
+      const messages = document.getElementById('aiMessages');
+      const userMsg = document.createElement('div'); userMsg.className='msg user'; userMsg.textContent = text; messages.appendChild(userMsg);
+      aiInput.value=''; messages.scrollTop = messages.scrollHeight;
+
+      
+      const loading = document.createElement('div'); loading.className='msg ai'; loading.textContent = '...'; messages.appendChild(loading); messages.scrollTop = messages.scrollHeight;
+
+      
+      setTimeout(()=>{
+        loading.textContent = 'Thank you for your query. Based on our standard packages, a typical database migration project starts at $5,000. For a detailed quote, please book a consultation.'
+        messages.scrollTop = messages.scrollHeight;
+      },1200);
+    };
+    
+    aiSend.addEventListener('click', sendMessage);
+    aiInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+   
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault(); alert('Thank you for your request! Our team will contact you within 24 hours.');
+    });
+
+   
+  </script>
+
+ 
+</body>
+</html>
