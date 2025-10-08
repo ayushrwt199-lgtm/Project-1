@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover" />
   <title>SwiftAI Consulting (SAC) — Professional IT Solutions</title>
   <meta name="description" content="SwiftAI Consulting offers expert IT solutions, from cloud migration to security audits. Partner with us for reliable and scalable technology services." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
-  
-  </style>
 </head>
 <body>
   <div class="wrap">
@@ -96,10 +94,10 @@
         <div class="card fade-up py-48">
           <h3 class="section-title mb-24">Book a Free Consultation</h3>
           <form id="contactForm" class="form-grid">
-            <input name="name" placeholder="Your Name" class="form-input" />
-            <input name="company" placeholder="Company Name" class="form-input" />
-            <input name="email" placeholder="Work Email" class="form-input" />
-            <input name="phone" placeholder="Phone (Optional)" class="form-input" />
+            <input name="name" type="text" required placeholder="Your Name" class="form-input" aria-label="Your Name" />
+            <input name="company" type="text" required placeholder="Company Name" class="form-input" aria-label="Company Name" />
+            <input name="email" type="email" required placeholder="Work Email" class="form-input" aria-label="Work Email" />
+            <input name="phone" type="tel" placeholder="Phone (Optional)" class="form-input" aria-label="Phone Number" />
             <textarea name="message" placeholder="How can we help you?" class="form-input full-width" style="min-height: 100px;"></textarea>
             <button type="submit" class="btn full-width">Request Consultation</button>
           </form>
@@ -126,54 +124,6 @@
   <div id="aiToggle" class="ai-toggle">AI</div>
 
   
-  <script>
-    
-    document.addEventListener('DOMContentLoaded',()=>{
-      document.querySelectorAll('.fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('show'), 100*i));
-    });
-
-    
-    const aiToggle = document.getElementById('aiToggle');
-    const aiDrawer = document.getElementById('aiDrawer');
-    aiToggle.addEventListener('click',()=>{
-      const open = aiDrawer.style.display !== 'none';
-      aiDrawer.style.display = open ? 'none' : 'flex';
-    });
-
-    
-    const aiSend = document.getElementById('aiSend');
-    const aiInput = document.getElementById('aiInput');
-    const sendMessage = async ()=>{
-      const text = aiInput.value.trim(); if(!text) return;
-      const messages = document.getElementById('aiMessages');
-      const userMsg = document.createElement('div'); userMsg.className='msg user'; userMsg.textContent = text; messages.appendChild(userMsg);
-      aiInput.value=''; messages.scrollTop = messages.scrollHeight;
-
-      
-      const loading = document.createElement('div'); loading.className='msg ai'; loading.textContent = '...'; messages.appendChild(loading); messages.scrollTop = messages.scrollHeight;
-
-      
-      setTimeout(()=>{
-        loading.textContent = 'Thank you for your query. Based on our standard packages, a typical database migration project starts at $5,000. For a detailed quote, please book a consultation.'
-        messages.scrollTop = messages.scrollHeight;
-      },1200);
-    };
-    
-    aiSend.addEventListener('click', sendMessage);
-    aiInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-
-   
-    document.getElementById('contactForm').addEventListener('submit', (e)=>{
-      e.preventDefault(); alert('Thank you for your request! Our team will contact you within 24 hours.');
-    });
-
-   
-  </script>
-
- 
+  <script src="js/main.js"></script>
 </body>
 </html>
