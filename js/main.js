@@ -1,6 +1,5 @@
 'use strict';
 
-// Animation Observer
 class AnimationObserver {
   constructor() {
     this.observer = new IntersectionObserver((entries) => {
@@ -20,7 +19,6 @@ class AnimationObserver {
   }
 }
 
-// AI Chat System
 class AIChat {
   constructor() {
     this.responses = {
@@ -111,12 +109,11 @@ class AIChat {
   }
 }
 
-// Contact Form System
 class ContactForm {
   constructor() {
     this.form = document.getElementById('contactForm');
     if (!this.form) return;
-
+    
     this.initialize();
   }
 
@@ -188,7 +185,25 @@ class ContactForm {
     submitBtn.textContent = 'Sending...';
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const formData = {
+        name: this.form.querySelector('input[name="name"]').value,
+        company: this.form.querySelector('input[name="company"]').value,
+        email: this.form.querySelector('input[name="email"]').value,
+        phone: this.form.querySelector('input[name="phone"]').value,
+        message: this.form.querySelector('textarea[name="message"]').value
+      };
+
+      await emailjs.send('service_5flqfvl', 'template_0s8a6z5', {
+        to_name: 'Admin',
+        from_name: formData.name,
+        from_email: 'mukey127@gmail.com',
+        company: formData.company,
+        phone: formData.phone,
+        message: formData.message,
+        to_email: 'ayushrwt199@gmail.com',
+        reply_to: formData.email
+      });
+
       this.showFeedback('Thank you for your request! Our team will contact you within 24 hours.');
       this.form.reset();
       
@@ -199,7 +214,8 @@ class ContactForm {
         });
       }
     } catch (error) {
-      this.showFeedback('There was an error submitting your request. Please try again.', 'error');
+      console.error('Email sending failed:', error);
+      this.showFeedback(`Error: ${error.message}`, 'error');
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = originalText;
@@ -230,12 +246,10 @@ class ContactForm {
   }
 }
 
-// Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-  // Enable smooth scrolling
   document.documentElement.style.scrollBehavior = 'smooth';
+  emailjs.init("xrPmWogYA-Bx1timJ");
   
-  // Initialize all features
   const animationObserver = new AnimationObserver();
   document.querySelectorAll('.fade-up').forEach(el => animationObserver.observe(el));
   
